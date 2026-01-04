@@ -47,6 +47,7 @@ app.get('/',(req,res)=>{
 
 app.get('/fruits',async(req,res)=>{
     const allFruits = await Fruit.find() // This gets me all the fruits
+    res.render('all-fruits.ejs',{allFruits: allFruits})
 })
 
 
