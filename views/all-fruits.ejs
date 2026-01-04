@@ -9,6 +9,7 @@
     <% allFruits.forEach((oneFruit)=>{ %>
         <p>Name: <%= oneFruit.name %></p>
         <p>Ready to Eat: <%= oneFruit.isReadyToEat %></p>
+        <a href="/fruits/<%=oneFruit._id%>">See Details</a>
     <% }) %>
 
 </body>

@@ -53,8 +53,8 @@ app.get('/fruits',async(req,res)=>{
 
 app.get('/fruits/:id',async(req,res)=>{
      console.log(req.params)
-     const foundFruit = await Fruit.findById(req.params.id)
-     res.render('fruit-details.ejs')
+     const foundFruit = await Fruit.findById(req.params.id) // Finds the 1 fruit with id that matches the id in the params
+     res.render('fruit-details.ejs',{foundFruit: foundFruit}) // render the ejs page and send the found fruit to it
 })
 
 
