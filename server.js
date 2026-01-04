@@ -36,16 +36,17 @@ const Fruit = mongoose.model('Fruit',fruitsSchema)
 
 
 
-async function createFruit(){
-    const createdFruit = await Fruit.create({name:"Apple",isReadyToEat:true})
-    console.log(createdFruit)
-}
-createFruit()
+
 
 
 // Routes go here
 app.get('/',(req,res)=>{
     res.render('homepage.ejs')
+})
+
+
+app.get('/fruits',async(req,res)=>{
+    const allFruits = await Fruit.find() // This gets me all the fruits
 })
 
 
