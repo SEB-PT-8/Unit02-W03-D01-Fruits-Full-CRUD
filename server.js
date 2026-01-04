@@ -27,7 +27,10 @@ conntentToDB()
 
 // Schema and Model
 
-const fruitsSchema = new mongoose.Schema({})
+const fruitsSchema = new mongoose.Schema({
+    name:String,
+    isReadyToEat: Boolean
+})
 
 
 // Routes go here
