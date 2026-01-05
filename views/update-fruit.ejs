@@ -8,7 +8,7 @@
 <body>
     <h1>Update <%= foundFruit.name %></h1>
 
-    <form action="/fruits" method="post">
+    <form action="/fruits/update/<%= foundFruit._id %>" method="post">
 
         <label for="name">Name:</label>
         <input value="<%= foundFruit.name %>" name="name" id="name" type="text">
