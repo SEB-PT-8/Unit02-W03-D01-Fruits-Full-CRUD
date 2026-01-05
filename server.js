@@ -51,6 +51,10 @@ app.get('/fruits',async(req,res)=>{
     res.render('all-fruits.ejs',{allFruits: allFruits})
 })
 
+app.post('/fruits/delete/:id', async(req,res)=>{
+    const deletedFruit = await Fruit.findByIdAndDelete(req.params.id)
+    
+})
 
 app.get('/fruits/new',(req,res)=>{
     res.render('new-fruit.ejs')
