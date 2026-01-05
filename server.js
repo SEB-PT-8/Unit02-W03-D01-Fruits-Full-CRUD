@@ -73,10 +73,6 @@ app.get('/fruits/:id',async(req,res)=>{
      const foundFruit = await Fruit.findById(req.params.id) // Finds the 1 fruit with id that matches the id in the params
      res.render('fruit-details.ejs',{foundFruit: foundFruit}) // render the ejs page and send the found fruit to it
 })
-// 1. GET route to show the user form for new fruit
-// 2. user submits form and send POST request to server
-// 3. Save the data the user gives me in the database
-// 4. redirect user to another page
 
 
 
