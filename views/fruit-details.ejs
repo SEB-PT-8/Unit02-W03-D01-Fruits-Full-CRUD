@@ -9,5 +9,9 @@
     <h1>Fruit Details</h1>
 
     <p>Name: <%= foundFruit.name %></p>
+
+    <form action="/fruits/delete/<%= foundFruit._id %>" method="post">
+        <button>Delete Fruit</button>
+    </form>
 </body>
 </html>

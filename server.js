@@ -53,6 +53,8 @@ app.get('/fruits',async(req,res)=>{
 
 app.post('/fruits/delete/:id', async(req,res)=>{
     const deletedFruit = await Fruit.findByIdAndDelete(req.params.id)
+
+    res.redirect('/fruits')
     
 })
 
