@@ -58,6 +58,10 @@ app.post('/fruits/delete/:id', async(req,res)=>{
     
 })
 
+app.get('/fruits/update/:id', async(req,res)=>{
+    res.render('update-fruit.ejs')
+})
+
 app.get('/fruits/new',(req,res)=>{
     res.render('new-fruit.ejs')
 })
