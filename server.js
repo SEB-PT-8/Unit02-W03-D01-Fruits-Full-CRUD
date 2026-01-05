@@ -58,10 +58,23 @@ app.post('/fruits/delete/:id', async(req,res)=>{
     
 })
 
+// UPDATE ROUTES
 app.get('/fruits/update/:id', async(req,res)=>{
     const foundFruit = await Fruit.findById(req.params.id)
     res.render('update-fruit.ejs',{foundFruit: foundFruit})
 })
+
+app.post('/fruits/update/:id', async (req,res)=>{
+    if(req.body.isReadyToEat){
+        req.body.isReadyToEat = true
+    }
+    else{
+        req.body.isReadyToEat = false
+    }
+
+    const updatedFruit = await Fruit.findByIdAndUpdate(req.params.id, req.body)
+})
+
 
 app.get('/fruits/new',(req,res)=>{
     res.render('new-fruit.ejs')
