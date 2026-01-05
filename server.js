@@ -73,6 +73,7 @@ app.post('/fruits/update/:id', async (req,res)=>{
     }
 
     const updatedFruit = await Fruit.findByIdAndUpdate(req.params.id, req.body)
+    res.redirect('/fruits')
 })
 
 
