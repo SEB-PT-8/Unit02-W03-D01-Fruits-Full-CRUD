@@ -6,6 +6,18 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Update fruit</h1>
+    <h1>Update <%= foundFruit.name %></h1>
+
+    <form action="/fruits" method="post">
+
+        <label for="name">Name:</label>
+        <input value="<%= foundFruit.name %>" name="name" id="name" type="text">
+
+        <label for="isReadyToEat">Is ready to Eat: </label>
+        <input <% if(foundFruit.isReadyToEat) {%> checked <% } %> name="isReadyToEat" id="isReadyToEat" type="checkbox">
+
+    
+        <button >Update Fruit</button>
+    </form>
 </body>
 </html>
