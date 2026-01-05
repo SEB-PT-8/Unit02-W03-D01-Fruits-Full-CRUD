@@ -7,6 +7,7 @@ const app = express() // creates an instance of express Server
 
 
 app.use(express.static('public')) // my app will serve all static files from public folder
+app.use(express.urlencoded({ extended: false }));
 
 
 
@@ -51,11 +52,32 @@ app.get('/fruits',async(req,res)=>{
 })
 
 
+app.get('/fruits/new',(req,res)=>{
+    res.render('new-fruit.ejs')
+})
+
+app.post('/fruits',async(req,res)=>{
+    if(req.body.isReadyToEat){
+        req.body.isReadyToEat = true
+    }
+    else{
+        req.body.isReadyToEat = false
+    }
+    const createdFruit = await Fruit.create(req.body)
+
+    res.redirect('/fruits')
+})
+
 app.get('/fruits/:id',async(req,res)=>{
      console.log(req.params)
      const foundFruit = await Fruit.findById(req.params.id) // Finds the 1 fruit with id that matches the id in the params
      res.render('fruit-details.ejs',{foundFruit: foundFruit}) // render the ejs page and send the found fruit to it
 })
+// 1. GET route to show the user form for new fruit
+// 2. user submits form and send POST request to server
+// 3. Save the data the user gives me in the database
+// 4. redirect user to another page
+
 
 
 
