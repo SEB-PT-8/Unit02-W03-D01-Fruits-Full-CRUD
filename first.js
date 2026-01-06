@@ -1,4 +1,8 @@
 const instructorName = 'Abdullah'
+const secondInstructor = 'Omar'
 
 
-module.exports = instructorName
+module.exports = {
+    abdullah: instructorName,
+    omar: secondInstructor
+}

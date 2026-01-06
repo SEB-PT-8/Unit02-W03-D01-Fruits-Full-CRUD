@@ -8,6 +8,8 @@ console.log(process.env.STUDENT_NAME)
 
 console.log(teacher)
 
+const Fruit = require('./models/Fruit')
+
 
 app.use(express.static('public')) // my app will serve all static files from public folder
 app.use(express.urlencoded({ extended: false }));
@@ -28,15 +30,6 @@ async function conntentToDB(){
 }
 conntentToDB()
 
-
-// Schema and Model
-
-const fruitsSchema = new mongoose.Schema({
-    name:String,
-    isReadyToEat: Boolean
-})
-
-const Fruit = mongoose.model('Fruit',fruitsSchema)
 
 
 
