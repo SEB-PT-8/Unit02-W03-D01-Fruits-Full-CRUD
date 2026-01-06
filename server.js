@@ -3,13 +3,21 @@ const express = require('express') // import the express package
 require('dotenv').config()
 const app = express() // creates an instance of express Server
 
-const teacher = require('./first')
+const {abdullah, omar} = require('./first')
 console.log(process.env.STUDENT_NAME)
 
-console.log(teacher)
+console.log(abdullah)
 
 const Fruit = require('./models/Fruit')
 
+
+const myStudent = {
+    studentName: 'Ebrahim',
+    course: 'SEB'
+}
+
+const {studentName, course} = myStudent
+console.log(course)
 
 app.use(express.static('public')) // my app will serve all static files from public folder
 app.use(express.urlencoded({ extended: false }));
