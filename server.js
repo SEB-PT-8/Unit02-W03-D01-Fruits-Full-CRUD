@@ -1,9 +1,12 @@
 const express = require('express') // import the express package
 
-
+require('dotenv').config()
 const app = express() // creates an instance of express Server
 
+const teacher = require('./first')
+console.log(process.env.STUDENT_NAME)
 
+console.log(teacher)
 
 
 app.use(express.static('public')) // my app will serve all static files from public folder
@@ -16,7 +19,7 @@ const mongoose = require('mongoose')
 async function conntentToDB(){
     try{
         // /database_name?
-        await mongoose.connect('mongodb+srv://omar:123@omar-cluster.dbwrx.mongodb.net/fruitsDB?appName=omar-cluster')
+        await mongoose.connect(process.env.MONGODB_URL)
         console.log('Connection Successful')
     }
     catch(err){
