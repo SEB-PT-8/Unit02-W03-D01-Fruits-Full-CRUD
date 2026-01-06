@@ -46,18 +46,55 @@ app.get('/',(req,res)=>{
 })
 
 
+
+
+// --------------------------------------------------------
+// READ: All Fruits
 app.get('/fruits',async(req,res)=>{
     const allFruits = await Fruit.find() // This gets me all the fruits
     res.render('all-fruits.ejs',{allFruits: allFruits})
 })
 
-app.post('/fruits/delete/:id', async(req,res)=>{
-    const deletedFruit = await Fruit.findByIdAndDelete(req.params.id)
+// READ: One Fruit
+app.get('/fruits/:id',async(req,res)=>{
+     console.log(req.params)
+     const foundFruit = await Fruit.findById(req.params.id) // Finds the 1 fruit with id that matches the id in the params
+     res.render('fruit-details.ejs',{foundFruit: foundFruit}) // render the ejs page and send the found fruit to it
+})
+// --------------------------------------------------------
 
-    res.redirect('/fruits')
-    
+
+
+
+
+// --------------------------------------------------------
+// CREATE
+
+
+app.get('/fruits/new',(req,res)=>{
+    res.render('new-fruit.ejs')
 })
 
+app.post('/fruits',async(req,res)=>{
+    if(req.body.isReadyToEat){
+        req.body.isReadyToEat = true
+    }
+    else{
+        req.body.isReadyToEat = false
+    }
+    const createdFruit = await Fruit.create(req.body)
+
+    res.redirect('/fruits')
+})
+
+// --------------------------------------------------------
+
+
+
+
+
+
+// --------------------------------------------------------
 // UPDATE ROUTES
 app.get('/fruits/update/:id', async(req,res)=>{
     const foundFruit = await Fruit.findById(req.params.id)
@@ -77,27 +114,21 @@ app.post('/fruits/update/:id', async (req,res)=>{
 })
 
 
-app.get('/fruits/new',(req,res)=>{
-    res.render('new-fruit.ejs')
-})
 
-app.post('/fruits',async(req,res)=>{
-    if(req.body.isReadyToEat){
-        req.body.isReadyToEat = true
-    }
-    else{
-        req.body.isReadyToEat = false
-    }
-    const createdFruit = await Fruit.create(req.body)
+
+// --------------------------------------------------------
+// DELETE Routes
+app.post('/fruits/delete/:id', async(req,res)=>{
+    const deletedFruit = await Fruit.findByIdAndDelete(req.params.id)
 
     res.redirect('/fruits')
+    
 })
 
-app.get('/fruits/:id',async(req,res)=>{
-     console.log(req.params)
-     const foundFruit = await Fruit.findById(req.params.id) // Finds the 1 fruit with id that matches the id in the params
-     res.render('fruit-details.ejs',{foundFruit: foundFruit}) // render the ejs page and send the found fruit to it
-})
+
+
+
+// --------------------------------------------------------
 
 
 
